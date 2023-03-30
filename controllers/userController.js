@@ -81,3 +81,19 @@ export const deletUser = expressAsync(async(req, res)=> {
 })
 
 
+
+
+export const getUserProfileById = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+  
+    if (user) {
+      res.json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+      });
+    } else {
+      res.status(404);
+      throw new Error("User Not Found");
+    }
+});
