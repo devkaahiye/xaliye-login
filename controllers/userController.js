@@ -7,7 +7,7 @@ export const login = expressAsync(async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
   
-    if (user && (await user.password ==password)) {
+    if (user) {
       res.json({
         _id: user._id,
         name: user.name,
