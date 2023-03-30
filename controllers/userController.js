@@ -83,7 +83,7 @@ export const deletUser = expressAsync(async(req, res)=> {
 
 
 
-export const getUserProfileById = asyncHandler(async (req, res) => {
+export const getUserProfileById = expressAsync(async (req, res) => {
     const user = await User.findById(req.params.id);
   
     if (user) {
