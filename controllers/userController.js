@@ -5,12 +5,8 @@ export const login = expressAsync(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
 
-  if (user && user.password === password) {
-    res.json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-    });
+  if (user) {
+    res.json(user);
   } else {
     res.status(500).json({ error: e.message });
   }
